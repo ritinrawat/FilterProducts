@@ -4,16 +4,28 @@ import SearchBar from "../components/SearchBar";
 import Filter from "../components/Filter";
 import productsData from "../data/productdata";
 import Navbar from "../components/Navbar";
+import Sortprice  from "../components/Sortprice"
 
 function Home() {
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("");
+  const [sortOrder, setSortOrder] = useState("");
 
-  const filteredProducts = productsData.filter((item) => {
+const filteredProducts = productsData
+  .filter((item) => {
     return (
       item.name.toLowerCase().includes(search.toLowerCase()) &&
       (category ? item.category === category : true)
     );
+  })
+  .sort((a, b) => {
+    if (sortOrder === "low") {
+      return a.price - b.price; // Low → High
+    }
+    if (sortOrder === "high") {
+      return b.price - a.price; // High → Low
+    }
+    return 0;
   });
 
   return (
@@ -23,14 +35,18 @@ function Home() {
       {/* Hero Section */}
 
 
+
       <div className="max-w-7xl h-screen mx-auto px-4 sm:px-6 pb-24">
-        <div className="flex flex-col sm:flex-row items-center justify-between mb-10 mt-6 pb-6 border-b border-gray-200/60 gap-4">
-          <div className="flex items-center gap-3">
-            <h2 className="text-2xl font-bold text-gray-900">Featured collection</h2>
+           
+          <div className="flex items-center gap-3 p-5 ">
+            <h2 className="text-2xl font-bold text-gray-900 ">Featured collection</h2>
             <span className="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm font-bold">
               {filteredProducts.length} items
             </span>
           </div>
+        <div className="flex flex-col sm:flex-row items-center justify-between mb-5 mt-3  border-b border-gray-200/60 gap-4">
+        <SearchBar setSearch={setSearch}/>
+        <Sortprice setSortOrder={setSortOrder}/>
           <Filter setCategory={setCategory} />
         </div>
 
