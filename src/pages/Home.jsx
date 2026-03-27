@@ -29,7 +29,7 @@ const filteredProducts = productsData
   });
 
   return (
-    <div className="min-h-screen bg-[#a5b7cb] font-sans">
+    <div className="min-h-screen bg-[#F8FAFC] font-sans">
       <Navbar setSearch={setSearch} />
 
       {/* Hero Section */}
