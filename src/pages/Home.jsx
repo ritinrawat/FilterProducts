@@ -36,7 +36,7 @@ const filteredProducts = productsData
 
 
 
-      <div className="max-w-7xl h-screen mx-auto px-4 sm:px-6 pb-24">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 pb-24">
            
           <div className="flex items-center gap-3 p-5 ">
             <h2 className="text-2xl font-bold text-gray-900 ">Featured collection</h2>
@@ -44,10 +44,18 @@ const filteredProducts = productsData
               {filteredProducts.length} items
             </span>
           </div>
-        <div className="flex flex-col sm:flex-row items-center justify-between mb-5 mt-3  border-b border-gray-200/60 gap-4">
-        <SearchBar setSearch={setSearch}/>
-        <Sortprice setSortOrder={setSortOrder}/>
-          <Filter setCategory={setCategory} />
+        <div className="flex flex-col lg:flex-row items-center justify-between mb-5 mt-3 pb-5 border-b border-gray-200/60 gap-4">
+          <div className="w-full lg:flex-1 max-w-xl">
+            <SearchBar setSearch={setSearch}/>
+          </div>
+          <div className="flex flex-row gap-3 w-full lg:w-auto justify-between lg:justify-end">
+            <div className="flex-1 lg:flex-none">
+              <Sortprice setSortOrder={setSortOrder}/>
+            </div>
+            <div className="flex-1 lg:flex-none">
+              <Filter setCategory={setCategory} />
+            </div>
+          </div>
         </div>
 
         {filteredProducts.length > 0 ? (

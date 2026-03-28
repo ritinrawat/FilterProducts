@@ -1,16 +1,26 @@
 import React from 'react'
 
-const Sort = ({ setSortOrder }) => {
+const Sortprice = ({ setSortOrder }) => {
   return (
-    <select
-      onChange={(e) => setSortOrder(e.target.value)}
-      className="p-2 border rounded-lg mb-4 ml-2"
-    >
-      <option value="">Sort By</option>
-      <option value="low">Price: Low → High</option>
-      <option value="high">Price: High → Low</option>
-    </select>
+    <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 w-full sm:w-auto">
+      <span className="text-sm font-semibold text-gray-500 uppercase tracking-wider hidden sm:block">Sort</span>
+      <div className="relative group w-full sm:w-auto">
+        <select
+          onChange={(e) => setSortOrder(e.target.value)}
+          className="appearance-none w-full sm:w-48 pl-5 pr-10 py-3.5 bg-white border border-gray-100 rounded-xl outline-none focus:ring-4 focus:ring-indigo-500/15 focus:border-indigo-400 text-gray-700 font-medium cursor-pointer transition-all duration-300 hover:bg-gray-50 shadow-md shadow-gray-200/50 group-hover:shadow-lg group-hover:shadow-indigo-500/10 group-focus-within:shadow-lg group-focus-within:shadow-indigo-500/15 group-hover:-translate-y-0.5"
+        >
+          <option value="">Sort By</option>
+          <option value="low">Price: Low → High</option>
+          <option value="high">Price: High → Low</option>
+        </select>
+        <div className="absolute inset-y-0 right-4 flex items-center pointer-events-none transition-transform group-hover:translate-y-0.5">
+          <svg className="w-4 h-4 text-gray-400 group-focus-within:text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </div>
+      </div>
+    </div>
   );
 };
 
-export default Sort;
+export default Sortprice;
